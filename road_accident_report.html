@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road Accident Risk Analysis — India</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f8;
+    color: #1a1a2e;
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(135deg, #8b0000, #b22222);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  header h1 { font-size: 2.4em; margin-bottom: 10px; }
+  header p { font-size: 1.1em; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+  .card h2 {
+    color: #8b0000;
+    border-bottom: 3px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+  }
+  th { background: #8b0000; color: white; }
+  tr:nth-child(even) { background: #fafafa; }
+  .highlight {
+    background: #fff3e0;
+    border-left: 4px solid #ff9800;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-top: 20px;
+  }
+  .stat-box {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .stat {
+    flex: 1;
+    min-width: 150px;
+    background: #f9f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .stat .num { font-size: 1.8em; font-weight: bold; color: #8b0000; }
+  .stat .label { font-size: 0.9em; color: #555; margin-top: 5px; }
+  .tag-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+  .tag {
+    background: #8b0000;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85em;
+  }
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🚦 Road Accident Risk Analysis — India</h1>
+  <p>Identifying high-risk time, weather, and location patterns using SQL, Python, and R (2018–2023 dataset, 3,000 records)</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Project Overview</h2>
+    <p>This project analyzes road accident data across Indian states to identify patterns in <strong>when</strong>, <strong>where</strong>, and <strong>under what conditions</strong> fatal accidents are most likely to occur. The goal is to generate insights that could support traffic police and policymakers in targeting interventions more effectively.</p>
+    <div class="tag-row">
+      <span class="tag">SQL (SQLite)</span>
+      <span class="tag">Python (Pandas, Matplotlib)</span>
+      <span class="tag">R (Statistical Testing)</span>
+      <span class="tag">HTML Report</span>
+    </div>
+    <div class="stat-box">
+      <div class="stat"><div class="num">3,000</div><div class="label">Total Records</div></div>
+      <div class="stat"><div class="num">22</div><div class="label">Columns</div></div>
+      <div class="stat"><div class="num">2018–2023</div><div class="label">Years Covered</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>1. Fatal Accidents by Hour of Day</h2>
+    <p>Fatal accidents were grouped by the hour extracted from the time of accident (24-hour format).</p>
+    <table>
+      <tr><th>Hour</th><th>Fatal Accidents</th></tr>
+      <tr><td>8 AM</td><td>56</td></tr>
+      <tr><td>7 AM</td><td>52</td></tr>
+      <tr><td>10 PM (22:00)</td><td>47</td></tr>
+      <tr><td>3 AM</td><td>47</td></tr>
+      <tr><td>9 PM (21:00)</td><td>46</td></tr>
+    </table>
+    <div class="highlight">
+      <strong>Insight:</strong> Contrary to the common assumption that late-night hours are most dangerous, the <strong>morning rush hour (7–8 AM)</strong> recorded the highest number of fatal accidents — likely due to higher traffic volume from commuters and school-goers.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2. Fatal Accidents by Weather Condition</h2>
+    <table>
+      <tr><th>Weather</th><th>Fatal Accidents</th></tr>
+      <tr><td>Stormy</td><td>203</td></tr>
+      <tr><td>Hazy</td><td>200</td></tr>
+      <tr><td>Rainy</td><td>197</td></tr>
+      <tr><td>Foggy</td><td>195</td></tr>
+      <tr><td>Clear</td><td>190</td></tr>
+    </table>
+    <div class="highlight">
+      <strong>Insight:</strong> Fatal accident counts are close across all weather types (190–203), suggesting weather alone is not a strong differentiator. This was further tested statistically below.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>3. Top 10 States by Fatal Accidents</h2>
+    <table>
+      <tr><th>State</th><th>Fatal Accidents</th></tr>
+      <tr><td>Kerala</td><td>40</td></tr>
+      <tr><td>Goa</td><td>40</td></tr>
+      <tr><td>Nagaland</td><td>39</td></tr>
+      <tr><td>Tamil Nadu</td><td>38</td></tr>
+      <tr><td>Uttarakhand</td><td>37</td></tr>
+    </table>
+    <div class="highlight">
+      <strong>Insight:</strong> Fatal accidents are fairly evenly distributed across states (34–40 range) rather than being concentrated in one region — indicating this is a nationwide issue, not a localized one.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>4. Fatal Accidents by Road Type</h2>
+    <table>
+      <tr><th>Road Type</th><th>Fatal Accidents</th></tr>
+      <tr><td>State Highway</td><td>261</td></tr>
+      <tr><td>Urban Road</td><td>254</td></tr>
+      <tr><td>National Highway</td><td>242</td></tr>
+      <tr><td>Village Road</td><td>228</td></tr>
+    </table>
+    <div class="highlight">
+      <strong>Insight:</strong> State Highways recorded the highest fatal accident count — higher than National Highways, despite National Highways typically having higher speed limits. This may reflect weaker safety infrastructure on state highways.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>5. Fatal Accidents by Vehicle Type Involved</h2>
+    <table>
+      <tr><th>Vehicle Type</th><th>Fatal Accidents</th></tr>
+      <tr><td>Cycle</td><td>167</td></tr>
+      <tr><td>Bus</td><td>167</td></tr>
+      <tr><td>Pedestrian</td><td>134</td></tr>
+      <tr><td>Truck</td><td>132</td></tr>
+      <tr><td>Two-Wheeler</td><td>131</td></tr>
+      <tr><td>Auto-Rickshaw</td><td>129</td></tr>
+      <tr><td>Car</td><td>125</td></tr>
+    </table>
+    <div class="highlight">
+      <strong>Insight:</strong> Accidents involving cyclists and buses show the highest fatality counts, likely due to cyclists' lack of physical protection compared to car occupants.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>6. Statistical Significance Test (R)</h2>
+    <p>A Chi-square test was performed to check whether Weather Condition and Accident Severity are statistically related.</p>
+    <div class="stat-box">
+      <div class="stat"><div class="num">11.10</div><div class="label">X-squared</div></div>
+      <div class="stat"><div class="num">8</div><div class="label">Degrees of Freedom</div></div>
+      <div class="stat"><div class="num">0.196</div><div class="label">p-value</div></div>
+    </div>
+    <div class="highlight">
+      <strong>Conclusion:</strong> Since the p-value (0.196) is greater than the standard threshold of 0.05, there is <strong>no statistically significant relationship</strong> between weather condition and accident severity in this dataset. This shows the importance of validating assumptions with statistical tests rather than relying on raw counts alone.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Key Takeaways</h2>
+    <p>• Morning rush hour (7–8 AM) is the highest-risk time window for fatal accidents.<br>
+    • Fatal accidents are spread fairly evenly across Indian states — a nationwide concern.<br>
+    • State Highways have more fatal accidents than National Highways.<br>
+    • Cyclists and bus-involved accidents have disproportionately high fatality counts.<br>
+    • Weather condition does not show a statistically significant link to accident severity.</p>
+  </div>
+
+</div>
+
+<footer>
+  Road Accident Risk Analysis Project · Built with SQL, Python &amp; R · Dataset: India Road Accident Dataset (Kaggle)
+</footer>
+
+</body>
+</html>
