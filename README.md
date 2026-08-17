@@ -146,4 +146,5 @@ python analysis.py
 
 ---
 
-*Built by a 2nd-year Polytechnic EEE student as a self-driven data analysis portfolio project.*
+*Built by a 2nd-year Degree student as a self-driven data analysis portfolio project.*
+
